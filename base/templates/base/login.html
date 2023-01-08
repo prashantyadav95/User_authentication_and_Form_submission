@@ -1,0 +1,43 @@
+{% extends 'base/index.html' %}
+{% load static %}
+{% block content %}
+<div class="p-3">
+    <h1 class="mt-3">Welcome</h1>
+    <h1 class="mt-3">Login</h1>
+    <form  action = "" method = "POST" autocomplete="off" >
+    {% csrf_token %}
+        {% if messages %}
+        {% for message in messages %}
+        <h1 {% if message.tags %} class="{{ message.tags }}" {% endif %}><b>{{ message }}<b/></h1>
+            {% endfor %}
+
+        {% endif %}
+        {{form.as_p}}
+<!--        {% if form.non_field_error %}-->
+<!--        {% for error in form.non_field_errors %}-->
+<!--         <h2 class="mt-3">{{error}}</h2>-->
+<!--        {% endfor %}-->
+<!--        {% endif %}-->
+<!--        {{ form.as_p }}-->
+<!--        {% for fm in form %}-->
+<!--        <div>{{ fm.label_tag}} {{fm.label}}</div>-->
+<!--        {% endfor %}-->
+
+        <input type = "submit" class="btn btn-primary" value="Login">
+<!--     {{form}}   -->
+
+    </form>
+
+</div>
+
+    <script src="{% static 'base/assets/libs/jquery/dist/jquery.min.js' %}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{% static 'base/assets/libs/popper.js/dist/umd/popper.min.js' %} "></script>
+    <script src="{% static 'base/assets/libs/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugin js -->
+    <!-- ============================================================== -->
+    <script>
+        $(".preloader ").fadeOut();
+    </script>
+{% endblock %}
